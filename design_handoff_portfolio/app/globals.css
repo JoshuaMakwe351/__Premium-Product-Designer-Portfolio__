@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --bg2: #f8f8f8;
+  --fg: #111111;
+  --fg2: #2d2d2d;
+  --muted: #6e6e73;
+  --border: rgba(17, 17, 17, 0.1);
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.72);
+  --accent: #4f46e5;
+  --accent2: #6d5cff;
+}
+
+.dark {
+  --bg: #08080a;
+  --bg2: #101013;
+  --fg: #f7f7f8;
+  --fg2: #c9c9cf;
+  --muted: #8b8b93;
+  --border: rgba(255, 255, 255, 0.12);
+  --card: #111114;
+  --glass: rgba(18, 18, 22, 0.66);
+  --accent: #7c74ff;
+  --accent2: #9d90ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Animated underline utility */
+.u-link {
+  position: relative;
+}
+.u-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.u-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.zoomable {
+  cursor: zoom-in;
+}
+
+/* Field styling for the contact form */
+.field {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg2);
+  color: var(--fg);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.field:focus {
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
