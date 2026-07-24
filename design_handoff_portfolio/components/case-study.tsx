@@ -60,8 +60,10 @@ export function CaseStudy({
           ))}
         </Reveal>
 
-        <Reveal className="mb-5 overflow-hidden rounded-[22px] border border-border shadow-soft dark:shadow-soft-dark" style={{ background: project.coverBg } as never}>
-          <Image src={project.hero} alt={`${project.title} hero`} width={2000} height={1400} priority className="w-full" />
+        <Reveal className="mb-5">
+          <div className="overflow-hidden rounded-[22px] border border-border shadow-soft dark:shadow-soft-dark" style={{ background: project.coverBg }}>
+            <Image src={project.hero} alt={`${project.title} hero`} width={2000} height={1400} priority className="w-full" />
+          </div>
         </Reveal>
 
         {project.video && (
