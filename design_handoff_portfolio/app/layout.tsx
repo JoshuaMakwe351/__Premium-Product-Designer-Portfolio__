@@ -7,7 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CursorGlow } from "@/components/cursor-glow";
 import { BackToTop } from "@/components/back-to-top";
-
+import Script from "next/script";
 const instrumentSerif = Instrument_Serif({
   weight: "400",
   subsets: ["latin"],
@@ -66,10 +66,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${instrumentSerif.variable} ${manrope.variable} ${geistMono.variable}`}
     >
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <Script
+  id="structured-data"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(jsonLd),
+  }}
+/> 
         <Providers>
           <CursorGlow />
           <Navbar />

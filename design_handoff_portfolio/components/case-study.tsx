@@ -14,10 +14,10 @@ function StoryRow({ title, children }: { title: string; children: React.ReactNod
   );
 }
 
-function Chips({ items }: { items: string[] }) {
+function Chips({ items = [] }: { items?: string[] }) {
   return (
     <div className="flex flex-wrap gap-2.5">
-      {items.map((t) => (
+      {(items ?? []).map((t) => (
         <span key={t} className="rounded-full border border-border px-4 py-2 text-sm">{t}</span>
       ))}
     </div>
@@ -77,7 +77,7 @@ export function CaseStudy({
 
         <StoryRow title="Goals">
           <ul className="flex flex-col gap-3.5">
-            {project.goals.map((g) => (
+            {(project.goals ?? []).map((g) => (
               <li key={g} className="relative pl-5.5 text-[17px] leading-snug text-fg2">
                 <span className="absolute left-0 top-[9px] h-[7px] w-[7px] rounded-full bg-accent" />
                 {g}
@@ -111,14 +111,17 @@ export function CaseStudy({
         ) : null}
 
         {project.decisions?.length ? (
-          <StoryRow title="Design Decisions">
-            <div className="flex flex-col gap-5.5 text-[17px] leading-relaxed text-fg2">
-              {project.decisions.map((d) => (
-                <p key={d.h}><strong className="text-fg">{d.h}</strong> {d.p}</p>
-              ))}
-            </div>
-          </StoryRow>
-        ) : null}
+  <StoryRow title="Design Decisions">
+  <div className="flex flex-col gap-5.5">
+    {project.decisions?.map((d, i) => (
+      <div key={i}>
+        <strong>{d.h}</strong>
+        <p>{d.p}</p>
+      </div>
+    ))}
+  </div>
+</StoryRow>
+) : null}
 
         {project.gallery?.length ? (
           <>
