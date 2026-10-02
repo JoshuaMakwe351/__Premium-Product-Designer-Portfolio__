@@ -7,7 +7,6 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CursorGlow } from "@/components/cursor-glow";
 import { BackToTop } from "@/components/back-to-top";
-import Script from "next/script";
 const instrumentSerif = Instrument_Serif({
   weight: "400",
   subsets: ["latin"],
@@ -65,15 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${instrumentSerif.variable} ${manrope.variable} ${geistMono.variable}`}
     >
-      <body>
-        <Script
-  id="structured-data"
-  type="application/ld+json"
-  strategy="beforeInteractive"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify(jsonLd),
-  }}
-/> 
+      <body> 
         <Providers>
           <CursorGlow />
           <Navbar />
